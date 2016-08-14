@@ -1,19 +1,17 @@
 
-'use strict';
-
 const stampit = require('stampit');
 
-const SlackService = stampit().
-  refs({
+const slackService = stampit()
+  .refs({
     requestPromise: null,
-    slackWebHookUrl: null
-  }).
-  init((opts) => {
+    slackWebHookUrl: null,
+  })
+  .init((opts) => {
     const instance = opts.instance;
-    if(!instance.requestPromise) throw new Error('requestPromise is required');
-    if(!instance.slackWebHookUrl) throw new Error('slackWebHookUrl is required');
-  }).
-  methods({
+    if (!instance.requestPromise) throw new Error('requestPromise is required');
+    if (!instance.slackWebHookUrl) throw new Error('slackWebHookUrl is required');
+  })
+  .methods({
     notify(msg) {
       const options = {
         method: 'POST',
@@ -28,4 +26,4 @@ const SlackService = stampit().
     },
   });
 
-module.exports = SlackService;
+module.exports = slackService;
