@@ -1,6 +1,18 @@
 service: garden-aid-chat-bff
-provider: aws
-runtime: nodejs4.3
+provider:
+  name: aws
+  runtime: nodejs4.3
+package:
+  include:
+    - index.js
+    - src
+    - node_modules
+  exclude:
+    - tests
+    - coverage
+    - package.json
 functions:
-    hello:
-        handler: handler.hello
+  slackNotify:
+      handler: index.notify
+      events:
+        - sns: ${slackNotifySnsTopicName}
