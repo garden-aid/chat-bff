@@ -24,4 +24,4 @@ fi
 
 npm prune --production
 
-sls-test deploy --stage $STAGE --region $AWS_REGION
+sls deploy --stage $STAGE --region $AWS_REGION
