@@ -9,6 +9,8 @@ if (!slackConfig) {
   throw new Error('Slack config not loaded into environment');
 }
 
+console.log('Using slack config: ', slackConfig);
+
 const slack = slackService({
   requestPromise: rp,
   slackWebHookUrl: slackConfig.webHookUrl,

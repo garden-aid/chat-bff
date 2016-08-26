@@ -8,8 +8,14 @@ const slackService = stampit()
   })
   .init((opts) => {
     const instance = opts.instance;
-    if (!instance.requestPromise) throw new Error('requestPromise is required');
-    if (!instance.slackWebHookUrl) throw new Error('slackWebHookUrl is required');
+    if (!instance.requestPromise) {
+      console.log('Missing ref: ', opts);
+      throw new Error('requestPromise is required');
+    }
+    if (!instance.slackWebHookUrl) {
+      console.log('Missing ref: ', opts);
+      throw new Error('slackWebHookUrl is required');
+    }
   })
   .methods({
     notify(msg) {
