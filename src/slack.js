@@ -5,7 +5,7 @@ const util = require('util');
 
 const slack = slackService({
   requestPromise: rp,
-  slackWebHookUrl: process.env.slackWebHookUrl,
+  slackWebHookUrl: process.env.slack.webHookUrl,
 });
 
 module.exports.notify = (event, context, cb) =>  {// eslint-disable-line no-unused-vars

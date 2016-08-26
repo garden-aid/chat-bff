@@ -5,5 +5,8 @@ require('./env')(secrets, true);
 
 // Setup env vars before requiring functions
 const slack = require('./src/slack');
+const iopipe = require('iopipe')({
+   clientId: process.env.iopipe.key
+});
 
-module.exports.notify = slack.notify;
+module.exports.notify = iopipe(slack.notify);
