@@ -9,7 +9,7 @@ if (!slackConfig) {
   throw new Error('Slack config not loaded into environment');
 }
 
-console.log('Using slack config: ', slackConfig);
+console.log('Using slack config: ', util.inspect(slackConfig, false, 5));
 
 const slack = slackService({
   requestPromise: rp,
