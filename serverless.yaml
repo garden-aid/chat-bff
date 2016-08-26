@@ -3,14 +3,20 @@ provider:
   name: aws
   runtime: nodejs4.3
 package:
-  include:
-    - index.js
-    - src
-    - node_modules
   exclude:
-    - tests
     - coverage
+    - tests
+    - .editorconfig
+    - .eslintignore
+    - .gitignore
+    - .synk
+    - .travis.yml
+    - .create-secrets.js
+    - deploy.sh
+    - LICENSE
     - package.json
+    - README.md
+
 functions:
   slackNotify:
       handler: index.notify
