@@ -1,6 +1,6 @@
 
 const rp = require('request-promise');
-const slackService = require('./services/slack');
+const slackService = require('./services/slack.js');
 const util = require('util');
 
 const slackConfig = process.env.slack;
