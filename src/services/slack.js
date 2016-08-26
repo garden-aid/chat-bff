@@ -14,7 +14,7 @@ const slackService = stampit()
       throw new Error('requestPromise is required');
     }
     if (!instance.slackWebHookUrl) {
-      console.log('Missing ref: ', opts);
+      console.log('Missing ref: ', util.inspect(instance, false, 5));
       throw new Error('slackWebHookUrl is required');
     }
   })

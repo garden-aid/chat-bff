@@ -1,7 +1,7 @@
 
 const secrets = require('./secrets.json');
 
-require('./env')(secrets, true);
+require('./env')(secrets, false);
 
 // Setup env vars before requiring functions
 const slack = require('./src/slack.js');
