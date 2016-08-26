@@ -1,6 +1,7 @@
 
 const rp = require('request-promise');
 const slackService = require('./services/slack.js');
+const util = require('util');
 
 const slack = slackService({
   requestPromise: rp,
