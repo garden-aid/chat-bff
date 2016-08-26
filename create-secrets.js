@@ -5,7 +5,6 @@
 const fs = require('fs');
 const path = require('path');
 
-
 const iopipeKey = process.env.IOPIPE_KEY;
 const slackWebHookUrl = process.env.SLACK_WEBHOOK_URL;
 
@@ -14,12 +13,8 @@ if (!iopipeKey) {
 }
 
 const secrets = {
-  iopipe: {
-    key: iopipeKey
-  },
-  slack: {
-    webHookUrl: slackWebHookUrl
-  }
+  iopipeKey: iopipeKey,
+  slackWebHookUrl: slackWebHookUrl
 };
 
 const secretsPath = path.resolve(__dirname, './secrets.json');

@@ -1,19 +1,10 @@
 
 const rp = require('request-promise');
 const slackService = require('./services/slack.js');
-const util = require('util');
-
-const slackConfig = process.env.slack;
-
-if (!slackConfig) {
-  throw new Error('Slack config not loaded into environment');
-}
-
-console.log('Using slack config: ', JSON.stringify(slackConfig, null, 4));
 
 const slack = slackService({
   requestPromise: rp,
-  slackWebHookUrl: slackConfig.webHookUrl,
+  slackWebHookUrl: process.env.slackWebHookUrl,
 });
 
 module.exports.notify = (event, context, cb) =>  {// eslint-disable-line no-unused-vars
