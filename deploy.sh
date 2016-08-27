@@ -17,10 +17,7 @@ fi
 
 echo "Deploying from branch $BRANCH to stage $STAGE"
 
-if [ ! -f secrets.json ]; then
-  echo "Cannot find secrets.json"
-  exit 0;
-fi
+node ./create-secrets.js # create secrets.json from env variables
 
 npm prune --production
 

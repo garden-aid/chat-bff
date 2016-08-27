@@ -1,9 +1,9 @@
 
 'use strict';
 
-const expect    = require('chai').expect;
-const sinon     = require('sinon');
-const rp        = require('request-promise');
+const expect = require('chai').expect;
+const sinon = require('sinon');
+const rp = require('request-promise');
 const BbPromise = require('bluebird');
 
 const SlackService = require('../../src/services/slack');
