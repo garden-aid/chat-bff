@@ -1,15 +1,19 @@
 
+const BbPromise = require('bluebird');
 const rp = require('request-promise');
-const slackService = require('./services/slack.js');
 const util = require('util');
+
+const slackService = require('./services/slack.js');
 
 const slack = slackService({
   requestPromise: rp,
   slackWebHookUrl: process.env.slackWebHookUrl,
 });
 
-module.exports.notify = (event, context, cb) =>  {// eslint-disable-line no-unused-vars
+module.exports.notify = (event, context, cb) =>  {
   console.log(util.inspect(event, false, 5));
+
+  const promises = [];
 
   event.Records.forEach(function(record) {
     if(record.EventSource !== 'aws:sns') {
@@ -17,11 +21,11 @@ module.exports.notify = (event, context, cb) =>  {// eslint-disable-line no-unus
       return;
     }
 
-    var notification = JSON.parse(record.Sns.Message);
-    slack.notify(notification.message);
+    const notification = JSON.parse(record.Sns.Message);
+    promises.push(slack.notify(notification.message));
   });
 
-  return cb(null, {
-    message: 'success'
-  });
+  return BbPromise.all(promises)
+          .then(() => cb(null, { message: 'success' }))
+          .catch(cb);
 };
